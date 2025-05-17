@@ -7,8 +7,8 @@ interface Quote {
 }
 
 export async function GET(
-  req: NextRequest,
-  context: { params: any }
+  _req: NextRequest,
+  _context: { params: any }
 ) {
   const mock: Quote[] = [
     { text: 'The only way to do great work is to love what you do.', author: 'Steve Jobs' },
