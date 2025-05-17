@@ -5,13 +5,9 @@ interface Quote {
   author?: string | null;
 }
 
-export default async function (
-  request: Request,
-  env: { DB: D1Database },
-  ctx: ExecutionContext
-) {
+export async function GET(request: Request, context: { env: { DB: D1Database } }) {
   try {
-    const { results } = await env.DB.prepare(
+    const { results } = await context.env.DB.prepare(
       'SELECT text, author FROM quotes ORDER BY RANDOM() LIMIT 1;'
     ).all();
 
@@ -43,10 +39,4 @@ interface D1Database {
   prepare: (query: string) => {
     all: (binds?: unknown[]) => Promise<{ results: any[] }>;
   };
-}
-
-// Cloudflare Pages Functions context 类型
-interface ExecutionContext {
-  waitUntil(promise: Promise<any>): void;
-  passThroughOnException(): void;
 }
