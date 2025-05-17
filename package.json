@@ -1,0 +1,33 @@
+{
+  "name": "cloudflare-study",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "vercel-build": "next build",
+    "dev": "next dev",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev .vercel/output/static --d1=DB",
+    "lint": "next lint",
+    "db:create:local": "npx wrangler d1 create quote_preview_db",
+    "db:schema:apply:local": "npx wrangler d1 execute DB --local --file=./schema.sql",
+    "db:query:local": "npx wrangler d1 execute DB --local --command"
+  },
+  "dependencies": {
+    "@cloudflare/next-on-pages": "^1.9.0",
+    "next": "15.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "wrangler": "^4.15.2"
+  }
+}

@@ -1,0 +1,66 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# 通用忽略
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.log
+*.pem
+*.tsbuildinfo
+*.local
+.env*
+.envrc
+.eslintcache
+
+# 依赖与包管理
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+.npm/
+.pnpm-debug.log*
+
+# IDE/编辑器
+.vscode/
+.idea/
+
+# 构建与产物
+/.next/
+/out/
+/build
+/.turbo/
+.coverage/
+coverage/
+.next/
+out/
+build/
+.turbo/
+coverage/
+
+# 测试
+/coverage
+
+# Cloudflare/部署
+.vercel
+wrangler.local.toml
+.wrangler/
+
+# 其他
+.DS_Store
+Thumbs.db
+schema.sql # 如数据库 schema 不希望上传可取消注释
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts

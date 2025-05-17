@@ -1,0 +1,13 @@
+name = "quote-of-the-day"
+compatibility_date = "2024-05-01"
+
+[[d1_databases]]
+binding = "DB" # 在 Pages Function 代码中通过 context.env.DB 访问
+database_name = "PRODUCTION_DB_NAME_PLACEHOLDER" # 生产数据库名称 - 仅作占位，实际绑定在 Cloudflare Pages UI 设置
+database_id = "PRODUCTION_DB_ID_PLACEHOLDER"     # 生产数据库 ID - 仅作占位，实际绑定在 Cloudflare Pages UI 设置
+preview_database_id = "quote_preview_db"         # 本地预览数据库标识符
+migrations_dir = "d1_migrations"                 # 可选，若使用 wrangler migrations
+
+# 强烈警告：请勿在此文件中填写生产数据库的真实名称和 ID！
+# 生产环境 D1 绑定请务必在 Cloudflare Pages 项目的 UI 设置中完成。
+# preview_database_id 用于本地 wrangler pages dev 预览和 wrangler d1 命令，实际文件位于 .wrangler/state/d1/ 目录下。
