@@ -16,7 +16,8 @@ export default function QuotePage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('/api/quote');
+      // 方案核心：直接请求 Functions 路由
+      const res = await fetch('/functions/api/quote');
       if (!res.ok) {
         const data = await res.json();
         throw new Error(data.error || '获取名言失败');
