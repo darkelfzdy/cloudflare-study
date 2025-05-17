@@ -5,7 +5,7 @@ interface Quote {
   author?: string | null;
 }
 
-export default async function handler(
+export default async function (
   request: Request,
   env: { DB: D1Database },
   ctx: ExecutionContext
