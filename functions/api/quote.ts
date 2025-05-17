@@ -1,15 +1,16 @@
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
 
 interface Quote {
   text: string;
   author?: string | null;
 }
 
-export default async function handler(request: Request, env: { DB: D1Database }) {
+export default async function handler(
+  request: Request,
+  env: { DB: D1Database },
+  ctx: ExecutionContext
+) {
   try {
-    // 查询 D1 数据库
     const { results } = await env.DB.prepare(
       'SELECT text, author FROM quotes ORDER BY RANDOM() LIMIT 1;'
     ).all();
@@ -42,4 +43,10 @@ interface D1Database {
   prepare: (query: string) => {
     all: (binds?: unknown[]) => Promise<{ results: any[] }>;
   };
+}
+
+// Cloudflare Pages Functions context 类型
+interface ExecutionContext {
+  waitUntil(promise: Promise<any>): void;
+  passThroughOnException(): void;
 }
