@@ -68,11 +68,11 @@ export default function HomePage() { // 将组件名称改为 HomePage 以避免
       const imageUrl = URL.createObjectURL(imageBlob);
 
       // 清理旧的 Blob URL，防止内存泄漏
-      if (bgImageUrl) {
+      if (bgImageUrl) { // bgImageUrl 在这里是旧的值
         URL.revokeObjectURL(bgImageUrl);
       }
 
-      setBgImageUrl(imageUrl);
+      setBgImageUrl(imageUrl); // 设置新值
 
     } catch (err: any) {
       console.error('Error fetching background:', err); // 打印错误到控制台
@@ -91,13 +91,14 @@ export default function HomePage() { // 将组件名称改为 HomePage 以避免
 
     // Cleanup function to revoke the last created object URL when the component unmounts
     return () => {
+      // 这个 cleanup 函数只会在组件卸载时运行
+      // 它会使用组件卸载时 bgImageUrl 的最终值进行清理
       if (bgImageUrl) {
         URL.revokeObjectURL(bgImageUrl);
       }
     };
-    // bgImageUrl 被添加到依赖数组，以便在 bgImageUrl 变化时清理旧的 URL
-    // fetchQuote 和 fetchRandomBackground 函数是稳定的，不需要添加到依赖数组
-  }, [bgImageUrl]);
+    // 将依赖数组改为空，表示只在组件挂载和卸载时运行 effect
+  }, []); // <-- 将依赖数组改为空 []
 
   return (
     // 外层容器，应用背景图片样式和全屏布局
