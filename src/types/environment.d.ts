@@ -12,6 +12,9 @@ declare global {
       // 声明 DB 属性，并指定其类型为 D1Database
       DB: D1Database;
 
+      // R2 Bucket 绑定 - 添加这一行
+      BACKGROUND_IMAGES: R2Bucket;
+
       // 如果你还有其他绑定（例如 KV、R2），也在这里声明
       // MY_KV_BINDING?: KVNamespace;
       // MY_R2_BINDING?: R2Bucket;
