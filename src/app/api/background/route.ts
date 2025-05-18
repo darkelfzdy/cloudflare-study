@@ -12,10 +12,10 @@ export const runtime = 'edge';
 
 // 硬编码图片文件名列表
 const imageFilenames = [
-  'bingimg_20250411_UHD.jpg', // <-- 请替换为您的 R2 Bucket 中的实际文件名
+  'bingimg_20250417_UHD.jpg', // <-- 请替换为您的 R2 Bucket 中的实际文件名
   'bingimg_20250514_UHD.jpg',
   'bingimg_20250516_UHD.jpg',
-  'bingimg_20250517_UHD.jpg',
+  'bingimg_20250511_UHD.jpg',
   // ... 添加更多图片文件名
 ];
 
